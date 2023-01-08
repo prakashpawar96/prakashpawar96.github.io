@@ -1,0 +1,28 @@
+
+<button (click)="showForm = true">Add</button>
+
+<form *ngIf="showForm" #form="ngForm" (ngSubmit)="onSubmit(form)">
+  <label for="title">Title:</label><br>
+  <input type="text" id="title" name="title" [(ngModel)]="title"><br>
+  <label for="body">Body:</label><br>
+  <input type="text" id="body" name="body" [(ngModel)]="body"><br>
+  <button type="submit">Submit</button>
+</form>
+
+<table>
+  <tr>
+    <th>ID</th>
+    <th>Title</th>
+    <th>Body</th>
+  </tr>
+  <tr ngif="getData=true">
+    <td>{{ postData?.id }}</td>
+    <td>{{ postData?.title }}</td>
+    <td>{{ postData?.body }}</td>
+  </tr>
+  <tr *ngFor="let post of posts">
+    <td>{{ post.id }}</td>
+    <td>{{ post.title }}</td>
+    <td>{{ post.body }}</td>
+  </tr>
+</table>
